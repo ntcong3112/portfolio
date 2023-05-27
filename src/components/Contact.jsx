@@ -6,6 +6,8 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faGithub, faInstagram, faLinkedin, faTelegram } from "@fortawesome/free-brands-svg-icons";
 
 const Contact = () => {
   const formRef = useRef();
@@ -34,8 +36,8 @@ const Contact = () => {
     emailjs.send(
         //import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         //import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        'service_07ja28q',
-        'template_hav7gha',
+        'service_kx9o7jf',
+        'template_3czgkt9',
         {
           from_name: form.name,
           to_name: "Augustine",
@@ -44,12 +46,12 @@ const Contact = () => {
           message: form.message,
         },
        // import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-        'kBzvdjh66RZGzIXhl'
+        '5R1WZW6qPqdZBB3G7'
       )
       .then(
         () => {
           setLoading(false);
-          alert("This won't work anymore. Better send a text by phone or call my number");
+          alert("Gotcha! Your message reached my brain, but I've decided to embrace my inner sloth and avoid responding (unless it involves some sizzling flirtation). Lazy mode activated!");
 
           setForm({
             name: "",
@@ -61,7 +63,7 @@ const Contact = () => {
           setLoading(false);
           console.error(error);
 
-          alert("Ahh, something went wrong. Please try again.");
+          alert("Nahh, this shit doesn't work, better call my phone if you have any emergency!!");
         }
       );
   };
@@ -76,7 +78,42 @@ const Contact = () => {
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
-        <p className={styles.sectionSubText}>Phone: (+84) 859.1717.56</p>
+        <a href="tel:+84859171756"><p className={styles.sectionSubText}>Phone: (+84) 859.1717.56</p></a>
+        <ul className='list-none flex sm:flex-row gap-10 mt-10 '> {/* Remove the "hidden" class here */}
+      {/* Add the Github icon */}
+      <li className="text-[18px] cursor-pointer">
+        <a href="https://github.com/ntcong3112">
+          <FontAwesomeIcon icon={faGithub} className="text-secondary hover:text-purple-500" />
+        </a>
+      </li>
+
+      {/* Add the LinkedIn icon */}
+      <li className="text-[18px] cursor-pointer">
+        <a href="https://www.linkedin.com/in/ntcong3112/">
+          <FontAwesomeIcon icon={faLinkedin} className="text-secondary hover:text-blue-500" />
+        </a>
+      </li>
+
+ 
+      {/* Add the WhatsApp icon */}
+      <li className="text-[18px] cursor-pointer">
+        <a href="https://t.me/ntcong3112">
+          <FontAwesomeIcon icon={faTelegram} className="text-secondary hover:text-green-500" />
+        </a>
+      </li>
+
+      <li className="text-[18px] cursor-pointer">
+        <a href="https://fb.com/ntcongg">
+          <FontAwesomeIcon icon={faFacebook} className="text-secondary hover:text-purple-500" />
+        </a>
+      </li>
+      <li className="text-[18px] cursor-pointer">
+        <a href="https://www.instagram.com/_augustine.ng">
+          <FontAwesomeIcon icon={faInstagram} className="text-secondary hover:text-purple-500" />
+        </a>
+      </li>
+    </ul>
+
         <form
           ref={formRef}
           onSubmit={handleSubmit}
